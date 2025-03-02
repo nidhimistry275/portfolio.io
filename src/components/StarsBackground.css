@@ -1,0 +1,58 @@
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.2; 
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6; 
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+}
+
+
+.stars-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle, #010812 0%, #000 100%);
+  overflow: hidden;
+  z-index: -1;
+}
+
+.star {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 
+                     50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+
+.star:nth-child(odd) {
+  width: 4px;
+  height: 4px;
+  animation-duration: 1.5s;
+}
+
+.star:nth-child(even) {
+  width: 8px;
+  height: 8px;
+  animation-duration: 2.5s;
+}
+
+.star:nth-child(3n) {
+  animation-delay: 0.3s;
+}
+
+.star:nth-child(5n) {
+  animation-delay: 0.6s;
+}

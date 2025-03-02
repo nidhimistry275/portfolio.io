@@ -1,0 +1,137 @@
+
+.header {
+    position: fixed;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    padding-right: 0;
+    backdrop-filter: blur(5px);
+    z-index: 100;
+}
+
+.header .logo {
+    cursor: pointer;
+}
+
+.header .logo .logo-img {
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.header .nav-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-basis: 70%;
+}
+
+.nav-menu li {
+    width: max-content;
+    padding: 10px;
+    transform: rotate(270deg);
+    transition: all 0.4s ease-in-out;
+}
+
+.nav-menu li .navLink {
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.nav-menu li:hover {
+    transform: scale(1.25) rotate(270deg);
+    color: #0067A3;
+}
+
+.header .social-links {
+    width: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.header .social-links .social {
+    margin: 5px 0;
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+}
+
+.header .social-links .social:hover {
+    transform: scale(1.4);
+    fill: #0067A3;
+}
+
+.header .hamburger {
+    display: none;
+}
+
+ @media screen and (max-width: 750px), (max-height: 550px) {
+    .header {
+        width: 100vw;
+        height: auto;
+        flex-direction: row;
+        padding: 10px 20px;
+        backdrop-filter: blur(8px);
+    }
+
+    .header .logo .logo-img {
+        font-size: 40px;
+    }
+
+    .header .hamburger {
+        display: block;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .header .nav-menu {
+        width: 50vw;
+        position: absolute;
+        top: 0;
+        height: 85vh;
+        right: -100%;
+        transition: 0.4s ease-in-out;
+        background: rgba(18, 18, 18, 0.9);
+    }
+
+    .header .nav-menu.active {
+        right: 0;
+        z-index: 10;
+    }
+
+    .header .nav-menu li {
+        transform: rotate(0deg);
+        padding: 8px 12px;
+        z-index: 12;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-menu li:hover {
+        transform: scale(1.15);
+    }
+
+    .header .social-links {
+        padding: 2rem;
+        position: absolute;
+        top: 85vh;
+        height: 20vh;
+        right: -100%;
+        width: 50%;
+        flex-direction: row;
+        justify-content: space-evenly;
+        transition: 0.4s;
+        z-index: 110;
+        background: rgba(18, 18, 18, 0.9);
+    }
+
+    .header .social-links.active {
+        right: 0;
+    }
+} 

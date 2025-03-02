@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: rgba(0, 0, 0, 0.015);
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Cool Blue Button */
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #00A6FB; /* Bright Electric Blue */
+    width: fit-content;
+    padding: 15px 25px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 10px;
+    position: relative;
+    bottom: 0;
+    margin-top: 50px;
+    transition: all 0.35s ease-out;
+    background-color: transparent;
+}
+
+.btn:hover {
+    background-color: #0084D6; /* Rich Cool Blue */
+    bottom: 12px;
+    box-shadow: 0 0 20px 1px rgba(0, 166, 251, 0.75);
+}
+
+.btn:active {
+    background-color: #0067A3; /* Darker Cool Blue */
+}
+
+@media screen and (max-width: 750px) {
+    .btn {
+        font-size: 16px;
+    }
+}

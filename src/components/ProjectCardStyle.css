@@ -1,0 +1,161 @@
+.project-window {
+    width: 100%;
+    padding: 160px 7vw 0 15vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+}
+
+.project-wrapper.odd {
+    flex-direction: row-reverse;
+}
+
+.project-title {
+    margin-bottom: 15px;
+    font-size: 36px;
+    font-weight: 500;
+    color: #E3F2FD; /* Soft Blue Tint */
+}
+
+.about-project .desc {
+    font-size: 18px;
+    font-weight: 400;
+    color: #5E81AC; /* Muted Blue */
+}
+
+.project-img {
+    margin-left: 100px;
+    object-fit: contain;
+    animation: jump 2.7s infinite;
+    position: relative;
+    top: 0px;
+    filter: drop-shadow(2px 10px 20px rgba(94, 129, 172, 0.32)); /* Muted Blue Glow */
+}
+
+.odd .project-img {
+    margin-right: 100px;
+    margin-left: 0;
+}
+
+@keyframes jump {
+    0% {
+        top: 20px;
+    }
+
+    50% {
+        top: -20px;
+    }
+
+    100% {
+        top: 20px;
+    }
+}
+
+.project-img img {
+    border-radius: 18px;
+    max-width: 500px;
+    width: fit-content;
+    height: auto;
+    border: 3px solid #5E81AC; /* Muted Blue */
+}
+
+@media screen and (max-width: 1150px) {
+    .project-window {
+        padding-left: 17vw;
+        padding-top: 180px;
+    }
+
+    .project-img {
+        margin-left: 60px;
+    }
+
+    .odd .project-img {
+        margin-right: 60px;
+    }
+
+    .project-img img {
+        max-width: 400px;
+    }
+}
+
+@media screen and (max-width: 950px), screen and (max-height: 550px) {
+    .project-wrapper, .project-wrapper.odd {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .project-window {
+        padding-left: 25vw;
+        padding-top: 100px;
+    }
+
+    .project-title {
+        margin-top: 40px;
+    }
+
+    .project-img {
+        margin: 0;
+    }
+
+    .odd .project-img {
+        margin: 0;
+    }
+
+    .project-img img {
+        max-width: 450px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .project-window {
+        padding: 110px 150px 0;
+    }
+
+    .project-wrapper, .project-wrapper.odd {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .project-title {
+        margin-top: 35px;
+        font-size: 32px;
+    }
+
+    .about-project .desc {
+        font-size: 16px;
+        color: #81A1C1; /* Softer Blue */
+    }
+
+    .about-project .btn {
+        font-size: 16px;
+        background-color: #5E81AC; /* Muted Blue */
+        border: 2px solid #4C678A; /* Darker Blue */
+        transition: 0.3s;
+    }
+
+    .about-project .btn:hover {
+        background-color: #4C678A;
+    }
+
+    .project-img {
+        margin: 0;
+    }
+
+    .odd .project-img {
+        margin: 0;
+    }
+
+    .project-img img {
+        max-width: 300px;
+    }
+}
