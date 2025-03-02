@@ -1,6 +1,6 @@
 import React from "react";
 import "./AboutMeStyle.css";
-import myProfile from "../images/profilepic2.png";
+import myProfile from "../images/profile.jpg";
 
 export default function AboutMe({ id }) {
   return (
