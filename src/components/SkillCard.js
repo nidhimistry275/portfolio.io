@@ -12,7 +12,6 @@ import {
   TbBrandMysql,
   TbBrandReact,
   TbBrandNodejs,
-  TbBrandBootstrap,
   TbBrandTypescript,
   TbApi,
   TbBrandMongodb,
