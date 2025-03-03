@@ -35,7 +35,7 @@ function App() {
 
         <ProjectCard
           id="project"
-          projectTitle="Placemento: Manage college placements"
+          projectTitle="Placemento: Manage College Placements"
           projectDesc="Placemento connects job seekers and companies by matching resumes with job postings, making hiring easy. Both sides get smart recommendations to find the best fit. This application is built on the Php, MySQL, and JavaScript"
           projectLink="https://github.com/nidhimistry275/Placemento"
           deployedProjectLink="https://github.com/nidhimistry275/Placemento"
@@ -43,7 +43,7 @@ function App() {
         />
         <ProjectCard
           className="odd"
-          projectTitle="ShowHub: Ticket to the movie experience"
+          projectTitle="ShowHub: Ticket to Movie Experience"
           projectDesc="ShowHub is a full-stack web application developed as a part of a project, allowing users to search, book, and manage movie tickets seamlessly. This application is built on the MERN stack (MongoDB, Express.js, React.js, Node.js).
 "
           projectLink="https://github.com/nidhimistry275/showhub"
