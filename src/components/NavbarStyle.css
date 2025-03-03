@@ -8,8 +8,8 @@
     justify-content: space-between;
     padding: 20px 10px;
     padding-right: 0;
-    backdrop-filter: blur(5px);
-    z-index: 100;
+    backdrop-filter: blur(50px); 
+    z-index: 100; 
 }
 
 .header .logo {
@@ -78,7 +78,7 @@
         height: auto;
         flex-direction: row;
         padding: 10px 20px;
-        backdrop-filter: blur(8px);
+        background: #000000f3;
     }
 
     .header .logo .logo-img {
@@ -94,11 +94,11 @@
     .header .nav-menu {
         width: 50vw;
         position: absolute;
-        top: 0;
-        height: 85vh;
+        top: 10vh;
+        height: 30vh;
         right: -100%;
         transition: 0.4s ease-in-out;
-        background: rgba(18, 18, 18, 0.9);
+        background:  rgba(18, 18, 18, 0.9);
     }
 
     .header .nav-menu.active {
@@ -108,7 +108,7 @@
 
     .header .nav-menu li {
         transform: rotate(0deg);
-        padding: 8px 12px;
+        padding: 5px 10px;
         z-index: 12;
         transition: all 0.3s ease-in-out;
     }
@@ -120,8 +120,8 @@
     .header .social-links {
         padding: 2rem;
         position: absolute;
-        top: 85vh;
-        height: 20vh;
+        top: 40vh;
+        height: 10vh;
         right: -100%;
         width: 50%;
         flex-direction: row;
