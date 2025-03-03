@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -9,9 +9,22 @@ import AboutMe from "./components/AboutMe";
 import SkillCard from "./components/SkillCard";
 import AnimatedCursor from "react-animated-cursor";
 
-function App() {
+const CustomCursor = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+    };
+
+    handleResize(); // Set initial state
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <>
+    !isMobile && (
       <AnimatedCursor
         color="#fff"
         innerSize={15}
@@ -27,6 +40,30 @@ function App() {
           backgroundColor: "#1f36a1",
         }}
       />
+    )
+  );
+};
+
+function App() {
+  return (
+    <>
+      {/* <AnimatedCursor
+        color="#fff"
+        innerSize={15}
+        outerSize={50}
+        innerScale={2}
+        outerScale={2.2}
+        outerAlpha={0}
+        outerStyle={{
+          background: "#ffffff",
+          mixBlendMode: "exclusion",
+        }}
+        innerStyle={{
+          backgroundColor: "#1f36a1",
+        }}
+      /> */}
+      <CustomCursor />
+
       <div>
         <StarsBackground />
         <Navbar />
