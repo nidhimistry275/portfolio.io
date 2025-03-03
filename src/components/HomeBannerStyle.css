@@ -152,3 +152,25 @@ ul {
         font-size: 16px;
     }
 }
+
+.down-arrow {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color:#E3F2FD;
+    animation: bounce 1.5s infinite;
+    cursor: pointer;
+  }
+  
+  /* Smooth bouncing effect */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+  

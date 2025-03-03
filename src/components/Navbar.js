@@ -61,18 +61,6 @@ export default function Navbar() {
           <Link
             className="navLink"
             activeClass="active"
-            to="contact"
-            spy={true}
-            smooth={true}
-            duration={30}
-          >
-            Experience
-          </Link>
-        </li>
-        <li>
-          <Link
-            className="navLink"
-            activeClass="active"
             to="skills"
             spy={true}
             smooth={true}

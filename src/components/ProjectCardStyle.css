@@ -5,6 +5,14 @@
     justify-content: center;
     align-items: center;
 }
+.section-title {
+    font-size: 40px;
+    font-weight: 600;
+    color: #E3F2FD;
+    text-align: center;
+    margin-bottom: -4rem;
+    color: #E3F2FD;; /* Adjust color based on your theme */
+  }
 
 .project-wrapper {
     display: flex;

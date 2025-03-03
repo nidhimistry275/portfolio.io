@@ -1,8 +1,15 @@
 import React from "react";
 import "./HomeBannerStyle.css";
 import cartoon from "../images/mainIconsdark.svg";
+import { FaArrowDown } from "react-icons/fa";
 
 export default function HomeBanner({ id }) {
+  const scrollToProjects = () => {
+    const projectSection = document.getElementById("project");
+    if (projectSection) {
+      projectSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="home" id={id}>
       <div className="content">
@@ -28,7 +35,10 @@ export default function HomeBanner({ id }) {
         </div>
       </div>
       <div className="mask">
-        <img className="bg" src={cartoon} alt="girl-with-laptop" />
+        <img className="bg" src={cartoon} alt="Tech" />
+      </div>
+      <div className="down-arrow" onClick={scrollToProjects}>
+        <FaArrowDown />
       </div>
     </div>
   );
