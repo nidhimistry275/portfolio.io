@@ -1,13 +1,9 @@
-// Import the functions you need from the SDKs you need
-import firebase from "./firebase";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// Import the necessary functions from Firebase SDK
+import { initializeApp } from "firebase/app"; // Initialize Firebase
+import { getFirestore } from "firebase/firestore"; // Firestore
+import { getAnalytics, logEvent } from "firebase/analytics"; // Analytics
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDDJ1K8H8ApXnz-aPb_-nJnxp-WGu1QYLo",
   authDomain: "portfolio-analytics-e5340.firebaseapp.com",
@@ -18,6 +14,19 @@ const firebaseConfig = {
   measurementId: "G-31558J5BYP",
 };
 
-// Initialize Firebase
+// Initialize Firebase app
 const app = initializeApp(firebaseConfig);
+
+// Initialize Firestore
+const db = getFirestore(app);
+
+// Initialize Firebase Analytics
 const analytics = getAnalytics(app);
+
+// Function to log page view
+function logPageView() {
+  logEvent(analytics, "page_view"); // Logs a page view event
+}
+
+// Export Firestore and Analytics, along with the log function
+export { db, analytics, logPageView };
