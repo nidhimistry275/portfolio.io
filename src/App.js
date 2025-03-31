@@ -8,6 +8,20 @@ import ProjectCard from "./components/ProjectCard";
 import AboutMe from "./components/AboutMe";
 import SkillCard from "./components/SkillCard";
 import AnimatedCursor from "react-animated-cursor";
+import { db } from "./firebase";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { useEffect } from "react";
+
+const trackVisitors = async () => {
+  const docRef = doc(db, "siteStats", "views");
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    await updateDoc(docRef, { count: docSnap.data().count + 1 });
+  } else {
+    await setDoc(docRef, { count: 1 });
+  }
+};
 
 const CustomCursor = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -32,6 +46,7 @@ const CustomCursor = () => {
         innerScale={2}
         outerScale={2.2}
         outerAlpha={0}
+        c
         outerStyle={{
           background: "#ffffff",
           mixBlendMode: "exclusion",
@@ -45,6 +60,9 @@ const CustomCursor = () => {
 };
 
 function App() {
+  useEffect(() => {
+    trackVisitors();
+  }, []);
   return (
     <>
       {/* <AnimatedCursor
@@ -62,6 +80,7 @@ function App() {
           backgroundColor: "#1f36a1",
         }}
       /> */}
+
       <CustomCursor />
 
       <div>
