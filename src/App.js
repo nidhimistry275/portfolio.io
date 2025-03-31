@@ -10,7 +10,6 @@ import SkillCard from "./components/SkillCard";
 import AnimatedCursor from "react-animated-cursor";
 import { db } from "./firebase";
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
-import { useEffect } from "react";
 
 const trackVisitors = async () => {
   const docRef = doc(db, "siteStats", "views");
