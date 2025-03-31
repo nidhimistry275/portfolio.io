@@ -5,7 +5,7 @@ import { getAnalytics, logEvent } from "firebase/analytics"; // Analytics
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDDJ1K8H8ApXnz-aPb_-nJnxp-WGu1QYLo",
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "portfolio-analytics-e5340.firebaseapp.com",
   projectId: "portfolio-analytics-e5340",
   storageBucket: "portfolio-analytics-e5340.firebasestorage.app",
