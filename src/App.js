@@ -9,16 +9,42 @@ import AboutMe from "./components/AboutMe";
 import SkillCard from "./components/SkillCard";
 import AnimatedCursor from "react-animated-cursor";
 import { db } from "./firebase";
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import {
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+  collection,
+  addDoc,
+} from "firebase/firestore";
 
 const trackVisitors = async () => {
-  const docRef = doc(db, "siteStats", "views");
-  const docSnap = await getDoc(docRef);
+  try {
+    // Fetch the visitor's IP address
+    const response = await fetch("https://api64.ipify.org?format=json");
+    const data = await response.json();
+    const userIP = data.ip;
 
-  if (docSnap.exists()) {
-    await updateDoc(docRef, { count: docSnap.data().count + 1 });
-  } else {
-    await setDoc(docRef, { count: 1 });
+    // Reference to views count document
+    const viewsRef = doc(db, "siteStats", "views");
+    const viewsSnap = await getDoc(viewsRef);
+
+    if (viewsSnap.exists()) {
+      await updateDoc(viewsRef, { count: viewsSnap.data().count + 1 });
+    } else {
+      await setDoc(viewsRef, { count: 1 });
+    }
+
+    // Store the visitor's IP address in a new collection
+    const ipCollectionRef = collection(db, "visitorIPs");
+    await addDoc(ipCollectionRef, {
+      ip: userIP,
+      timestamp: new Date(),
+    });
+
+    console.log("Visitor IP logged:", userIP);
+  } catch (error) {
+    console.error("Error tracking visitor:", error);
   }
 };
 
@@ -45,7 +71,6 @@ const CustomCursor = () => {
         innerScale={2}
         outerScale={2.2}
         outerAlpha={0}
-        c
         outerStyle={{
           background: "#ffffff",
           mixBlendMode: "exclusion",
@@ -62,33 +87,16 @@ function App() {
   useEffect(() => {
     trackVisitors();
   }, []);
+
   return (
     <>
-      {/* <AnimatedCursor
-        color="#fff"
-        innerSize={15}
-        outerSize={50}
-        innerScale={2}
-        outerScale={2.2}
-        outerAlpha={0}
-        outerStyle={{
-          background: "#ffffff",
-          mixBlendMode: "exclusion",
-        }}
-        innerStyle={{
-          backgroundColor: "#1f36a1",
-        }}
-      /> */}
-
       <CustomCursor />
-
       <div>
         <StarsBackground />
         <Navbar />
         <HomeBanner id="home" />
         <div id="project">
           <h2 className="section-title">Projects</h2>
-
           <ProjectCard
             projectTitle="Placemento: Manage College Placements"
             projectDesc="Placemento connects job seekers and companies by matching resumes with job postings, making hiring easy. Both sides get smart recommendations to find the best fit. This application is built on the Php, MySQL, and JavaScript"
@@ -99,8 +107,7 @@ function App() {
           <ProjectCard
             className="odd"
             projectTitle="ShowHub: Ticket to Movie Experience"
-            projectDesc="ShowHub is a full-stack web application developed as a part of a project, allowing users to search, book, and manage movie tickets seamlessly. This application is built on the MERN stack (MongoDB, Express.js, React.js, Node.js).
-"
+            projectDesc="ShowHub is a full-stack web application developed as a part of a project, allowing users to search, book, and manage movie tickets seamlessly. This application is built on the MERN stack (MongoDB, Express.js, React.js, Node.js)."
             projectLink="https://github.com/nidhimistry275/showhub"
             deployedProjectLink="https://github.com/nidhimistry275/showhub"
             projectImg={require("./images/projectmovie.png")}
@@ -118,12 +125,11 @@ function App() {
             projectTitle="Netflix Clone"
             projectDesc="A Netflix-inspired movie streaming app featuring real-time data from the TMDb API, allowing users to browse, search, and watch movies effortlessly. Built with React.js and Firebase, it offers a sleek UI, secure authentication, and a fully responsive design."
             projectLink="https://github.com/nidhimistry275/netflix"
-            deployedProjectLink="https://github.com/nidhimistry275/netflix "
+            deployedProjectLink="https://github.com/nidhimistry275/netflix"
             projectImg={require("./images/projectnetflix.png")}
           />
         </div>
         <AboutMe id="about" />
-        {/* <ExpCont id="exp" /> */}
         <SkillCard id="skills" />
         <Footer />
       </div>
