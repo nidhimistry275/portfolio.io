@@ -18,6 +18,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 
+// Function to track visitors and log their IP and location
 const trackVisitors = async () => {
   try {
     // Fetch the visitor's IP address from ipify
@@ -34,13 +35,14 @@ const trackVisitors = async () => {
     const viewsRef = doc(db, "siteStats", "views");
     const viewsSnap = await getDoc(viewsRef);
 
+    // Update the views count in Firestore
     if (viewsSnap.exists()) {
       await updateDoc(viewsRef, { count: viewsSnap.data().count + 1 });
     } else {
       await setDoc(viewsRef, { count: 1 });
     }
 
-    // Store the visitor's IP address and location in a new collection
+    // Store the visitor's IP address and location in a new collection in Firestore
     const ipCollectionRef = collection(db, "visitorIPs");
     await addDoc(ipCollectionRef, {
       ip: userIP,
@@ -63,6 +65,7 @@ const trackVisitors = async () => {
   }
 };
 
+// Custom Cursor component to handle mobile and desktop versions
 const CustomCursor = () => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -98,9 +101,10 @@ const CustomCursor = () => {
   );
 };
 
+// Main App Component
 function App() {
   useEffect(() => {
-    trackVisitors();
+    trackVisitors(); // Track the visitor's IP and location on component mount
   }, []);
 
   return (
