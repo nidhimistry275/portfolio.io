@@ -18,54 +18,36 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-// Function to track visitors and log their IP and location
 const trackVisitors = async () => {
   try {
-    // Fetch the visitor's IP address from ipify
+    // Fetch the visitor's IP address
     const response = await fetch("https://api64.ipify.org?format=json");
     const data = await response.json();
     const userIP = data.ip;
-
-    // Fetch the location details from ip-api using the IP address
-    const locationResponse = await fetch(`http://ip-api.com/json/${userIP}`);
-    const locationData = await locationResponse.json();
-    const { city, country, regionName, zip } = locationData; // You can modify this based on the available location data
 
     // Reference to views count document
     const viewsRef = doc(db, "siteStats", "views");
     const viewsSnap = await getDoc(viewsRef);
 
-    // Update the views count in Firestore
     if (viewsSnap.exists()) {
       await updateDoc(viewsRef, { count: viewsSnap.data().count + 1 });
     } else {
       await setDoc(viewsRef, { count: 1 });
     }
 
-    // Store the visitor's IP address and location in a new collection in Firestore
+    // Store the visitor's IP address in a new collection
     const ipCollectionRef = collection(db, "visitorIPs");
     await addDoc(ipCollectionRef, {
       ip: userIP,
-      city: city,
-      country: country,
-      region: regionName,
-      zip: zip,
       timestamp: new Date(),
     });
 
-    console.log("Visitor IP and Location logged:", {
-      userIP,
-      city,
-      country,
-      regionName,
-      zip,
-    });
+    console.log("Visitor IP logged:", userIP);
   } catch (error) {
     console.error("Error tracking visitor:", error);
   }
 };
 
-// Custom Cursor component to handle mobile and desktop versions
 const CustomCursor = () => {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -101,10 +83,9 @@ const CustomCursor = () => {
   );
 };
 
-// Main App Component
 function App() {
   useEffect(() => {
-    trackVisitors(); // Track the visitor's IP and location on component mount
+    trackVisitors();
   }, []);
 
   return (
