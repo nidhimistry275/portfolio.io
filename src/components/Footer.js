@@ -1,6 +1,6 @@
 import React from "react";
 import "./FooterStyle.css";
-import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -14,14 +14,6 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Twitter"
-        >
-          <FaTwitter className="icon" />
-        </a>
-        <a
-          href="https://github.com/nidhimistry275"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub"
         >
           <FaGithub className="icon" />
         </a>
