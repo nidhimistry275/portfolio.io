@@ -40,7 +40,7 @@ body {
     font-size: 22px;
     font-weight: 600;
     margin-top: 100px;
-    color: #00A6FB; /* Cool Blue */
+    color: #00A6FB; 
 }
 
  .profile-photo .img {
@@ -55,7 +55,7 @@ body {
     padding-top: 75px;
     width: 110px;
     overflow-wrap: break-word;
-    color: #00A6FB; /* Cool Blue */
+    color: #00A6FB; 
     text-transform: uppercase;
     z-index: 0;
     font-size: 100px;
@@ -77,7 +77,7 @@ body {
 }
 
 .aboutMe-text span {
-    color: #00A6FB; /* Cool Blue */
+    color: #00A6FB; 
 }
 
 .about-container .aboutMe-text h3 {
@@ -88,7 +88,7 @@ body {
 }
 
 .about-container .aboutMe-text .resume {
-    color: #00A6FB; /* Cool Blue */
+    color: #00A6FB; 
     border-bottom: 2.5px solid #00A6FB;
     transition: all 0.3s ease-in-out;
     display: inline-block;

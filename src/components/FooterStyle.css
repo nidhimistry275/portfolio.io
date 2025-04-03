@@ -37,7 +37,6 @@
     transform: scale(1.2);
   }
   
-  /* Responsive Design */
   @media (max-width: 480px) {
     .footer {
       flex-direction: column;

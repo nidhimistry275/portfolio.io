@@ -10,7 +10,7 @@
 .skill-container .skill-header {
     font-size: 50px;
     font-weight: 600;
-    color: #E3F2FD; /* Soft Blue Tint */
+    color: #E3F2FD; 
     margin-bottom: 50px;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .skill-box h2 {
-    color: #D8DEE9; /* Light Muted Blue */
+    color: #D8DEE9; 
     letter-spacing: 2px;
     word-spacing: 3px;
 }
@@ -34,21 +34,21 @@
 }
 
 .techLogo {
-    border: 1px solid rgba(206, 219, 233, 0.8); /* Softened White Border */
+    border: 1px solid rgba(206, 219, 233, 0.8); 
     border-radius: 15px;
     height: 120px;
     width: auto;
     padding: 30px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-    background: rgba(94, 129, 172, 0.15); /* Light Muted Blue Background */
+    background: rgba(94, 129, 172, 0.15); 
 }
 
 .skill-box .skillset abbr .techLogo:hover {
-    border: 2px solid #81A1C1; /* Softer Blue */
-    box-shadow: 0px 5px 25px rgba(129, 161, 193, 0.5); /* Soft Blue Glow */
+    border: 2px solid #81A1C1; 
+    box-shadow: 0px 5px 25px rgba(129, 161, 193, 0.5); 
     transform: scale(1.12);
-    background: rgba(94, 129, 172, 0.3); /* Slightly Darker Background */
+    background: rgba(94, 129, 172, 0.3); 
 }
 
 @media screen and (max-width: 1040px), (max-height: 550px) {

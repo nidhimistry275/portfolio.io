@@ -59,7 +59,7 @@ ul {
 }
 
 .home .content .staticTitle .hrLine {
-    border-bottom: 3px solid rgba(0, 166, 251, 0.6); /* Cool Blue */
+    border-bottom: 3px solid rgba(0, 166, 251, 0.6); 
     margin-left: 20px;
     width: 20vw;
 }
