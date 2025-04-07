@@ -16,16 +16,17 @@ import {
   updateDoc,
   collection,
   addDoc,
+  query,
+  orderBy,
+  getDocs,
 } from "firebase/firestore";
 
 const trackVisitors = async () => {
   try {
-    // Fetch the visitor's IP address
     const response = await fetch("https://api64.ipify.org?format=json");
     const data = await response.json();
     const userIP = data.ip;
 
-    // Reference to views count document
     const viewsRef = doc(db, "siteStats", "views");
     const viewsSnap = await getDoc(viewsRef);
 
@@ -35,7 +36,6 @@ const trackVisitors = async () => {
       await setDoc(viewsRef, { count: 1 });
     }
 
-    // Store the visitor's IP address in a new collection
     const ipCollectionRef = collection(db, "visitorIPs");
     await addDoc(ipCollectionRef, {
       ip: userIP,
@@ -47,16 +47,28 @@ const trackVisitors = async () => {
     console.error("Error tracking visitor:", error);
   }
 };
+const getSortedVisitorIPs = async () => {
+  try {
+    const ipCollectionRef = collection(db, "visitorIPs");
+    const q = query(ipCollectionRef, orderBy("timestamp", "desc"));
+    const querySnapshot = await getDocs(q);
+
+    const visitorData = querySnapshot.docs.map((doc) => doc.data());
+    console.log("Sorted Visitor IPs:", visitorData);
+  } catch (error) {
+    console.error("Error fetching sorted visitor IPs:", error);
+  }
+};
 
 const CustomCursor = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust breakpoint as needed
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Set initial state
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
@@ -86,6 +98,7 @@ const CustomCursor = () => {
 function App() {
   useEffect(() => {
     trackVisitors();
+    getSortedVisitorIPs();
   }, []);
 
   return (

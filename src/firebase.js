@@ -1,9 +1,7 @@
-// Import the necessary functions from Firebase SDK
-import { initializeApp } from "firebase/app"; // Initialize Firebase
-import { getFirestore } from "firebase/firestore"; // Firestore
-import { getAnalytics, logEvent } from "firebase/analytics"; // Analytics
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAnalytics, logEvent } from "firebase/analytics";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -14,19 +12,14 @@ const firebaseConfig = {
   measurementId: "G-31558J5BYP",
 };
 
-// Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 
-// Initialize Firestore
 const db = getFirestore(app);
 
-// Initialize Firebase Analytics
 const analytics = getAnalytics(app);
 
-// Function to log page view
 function logPageView() {
-  logEvent(analytics, "page_view"); // Logs a page view event
+  logEvent(analytics, "page_view");
 }
 
-// Export Firestore and Analytics, along with the log function
 export { db, analytics, logPageView };
