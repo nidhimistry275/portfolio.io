@@ -26,7 +26,7 @@ export default function HomeBanner({ id }) {
           </ul>
           <a
             className="btn"
-            href="https://drive.google.com/file/d/1-pRKDOPzMOw82cs_Rs4t_YgqO_ZJEvs2/view?usp=sharing"
+            href="https://drive.google.com/file/d/1wQGqwTYcmJ22NXDroDGAIrSzGR8pVAMQ/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
           >
